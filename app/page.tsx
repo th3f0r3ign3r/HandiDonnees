@@ -1,14 +1,68 @@
+"use client";
+
+import { DoughnutChart, PolarAreaChart } from "@/components/chartjs";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import {
-  ArrowRightIcon,
-  GiftTopIcon,
-  HandRaisedIcon,
-  QuestionMarkCircleIcon,
-} from "@heroicons/react/24/outline";
+// import {
+//   ArrowRightIcon,
+//   GiftTopIcon,
+//   HandRaisedIcon,
+//   QuestionMarkCircleIcon,
+// } from "@heroicons/react/24/outline";
 import { HeartIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
+
+const beninMapHandicapPercentage = [
+  {
+    name: "Alibori",
+    value: 19680,
+  },
+  {
+    name: "Atacora",
+    value: 18100,
+  },
+  {
+    name: "Atlantique",
+    value: 38958,
+  },
+  {
+    name: "Borgou",
+    value: 28904,
+  },
+  {
+    name: "Collines",
+    value: 19300,
+  },
+  {
+    name: "Couffo",
+    value: 7689,
+  },
+  {
+    name: "Donga",
+    value: 20120,
+  },
+  {
+    name: "Littoral",
+    value: 23034,
+  },
+  {
+    name: "Mono",
+    value: 12003,
+  },
+  {
+    name: "Ouémé",
+    value: 17090,
+  },
+  {
+    name: "Plateau",
+    value: 12400,
+  },
+  {
+    name: "Zou",
+    value: 9790,
+  },
+];
 
 export default function Home() {
   return (
@@ -64,7 +118,7 @@ export default function Home() {
       </div>
 
       <main className="flex flex-col max-w-7xl mx-auto px-6 lg:px-8 my-36 gap-36">
-        <section>
+        {/* <section>
           <h2 className="tracking-tighter font-bold text-blue-600 text-4xl">
             Tout le monde a un rôle à jouer.
           </h2>
@@ -161,12 +215,89 @@ export default function Home() {
             Tout voir
             <ArrowRightIcon className="h-5 w-5 inline-block ml-2" />
           </Link>
+        </section> */}
+
+        <section className="flex flex-col gap-20">
+          <div>
+            <h2 className="text-4xl font-bold tracking-tighter text-gray-900">
+              Le handicap au Bénin. <br /> L’information par département
+            </h2>
+            <p className="mt-4 text-base tracking-tight leading-6 text-gray-600">
+              Tous les indicateurs sont déclinés à l’échelle départementale mais
+              aussi à l’échelle régionale et nationale (si les données sont
+              disponibles). Cette approche permet d’accéder à une meilleure
+              connaissance des caractéristiques de chaque département, de mettre
+              en exergue ses particularités et de faire des comparaisons à
+              différent niveau géographique.
+            </p>
+          </div>
+          <div className="flex gap-2 justify-center">
+            <Image
+              src="/benin-map.png"
+              className="w-[30rem]"
+              width={2000}
+              height={2222}
+              alt="benin map"
+              title="Pourcentage de personnes en situation de handicap par département au Bénin"
+            />
+            <div className="w-[45%]">
+              <DoughnutChart
+                data={{
+                  labels: beninMapHandicapPercentage.map((d) => d.name),
+                  datasets: [
+                    {
+                      label:
+                        "Pourcentage de personnes en situation de handicap",
+                      data: beninMapHandicapPercentage.map((d) => d.value),
+                      backgroundColor: [
+                        "rgba(255, 99, 132, 0.5)",
+                        "rgba(54, 162, 235, 0.8)",
+                        "rgba(255, 206, 86, 0.3)",
+                        "rgba(75, 192, 192, 0.5)",
+                        "rgba(153, 102, 255, 0.5)",
+                        "rgba(255, 159, 64, 0.5)",
+                        "rgba(255, 99, 132, 0.5)",
+                        "rgba(54, 162, 235, 0.5)",
+                        "rgba(255, 206, 86, 0.8)",
+                        "rgba(75, 192, 192, 0.5)",
+                        "rgba(153, 102, 255, 0.2)",
+                        "rgba(255, 159, 64, 0.5)",
+                      ],
+                      borderWidth: 1,
+                    },
+                  ],
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="bg-gray-100 p-8 rounded-2xl flex justify-between items-center">
+            <div className="max-w-3xl">
+              <h3 className="text-2xl font-bold tracking-tighter">
+                Besoin d&apos;informations plus détaillées ?{" "}
+              </h3>
+              <p className="text-sm text-gray-500 mt-1">
+                Nous mettons à votre disposition des données quantitatives et
+                qualitatives sur le parcours des personnes en situation de
+                handicap, les actions menées et les résultats obtenus à travers
+                tout le pays.
+              </p>
+            </div>
+            <Link
+              href="#"
+              className="px-8 py-4 rounded-full bg-blue-500 flex gap-3"
+            >
+              <span className="text-base font-semibold tracking-tight text-white">
+                Faire une demande
+              </span>
+            </Link>
+          </div>
         </section>
 
         <section>
           <div className="mx-auto max-w-3xl lg:mx-0">
-            <h2 className="text-3xl font-bold tracking-tighter text-gray-900 sm:text-4xl">
-              Grâce à votre soutien, <br /> nous avons pu réaliser de grandes choses.
+            <h2 className="text-3xl font-bold tracking-tighter text-gray-900 sm:text-5xl">
+              Grâce à votre soutien, nous avons pu réaliser de grandes choses.
             </h2>
             <p className="mt-3 text-base leading-7 text-gray-600">
               Nous sommes fiers de ce que nous avons accompli ensemble. Voici
@@ -174,23 +305,26 @@ export default function Home() {
             </p>
           </div>
           <div className="mx-auto mt-16 flex max-w-2xl flex-col gap-8 lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:items-end">
-            <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-gray-50 p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start">
+            <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-gray-100 p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start">
               <p className="flex-none text-3xl font-bold tracking-tighter text-gray-900">
-                750.000+
+                {beninMapHandicapPercentage.reduce(
+                  (acc, cur) => acc + cur.value,
+                  0
+                )}
               </p>
               <div className="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
                 <p className="text-lg font-semibold tracking-tight text-gray-900">
                   Personnes aidées
                 </p>
                 <p className="mt-2 text-base leading-6 text-gray-600 tracking-tighter">
-                  Depuis notre création, jusqu&apos;à aujourd&apos;hui, nous avons
-                  aidé toutes ces personnes en situation de handicap.
+                  Depuis notre création, jusqu&apos;à aujourd&apos;hui, nous
+                  avons aidé toutes ces personnes en situation de handicap.
                 </p>
               </div>
             </div>
             <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-gray-900 p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start lg:gap-y-40">
               <p className="flex-none text-3xl font-bold tracking-tighter text-white">
-                250 Millions <br /> FCFA
+                250+ Millions <br /> FCFA
               </p>
               <div className="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
                 <p className="text-lg font-semibold tracking-tight text-white">
@@ -202,7 +336,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-indigo-600 p-8 sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28">
+            <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-pink-500 p-8 sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28">
               <p className="flex-none text-3xl font-bold tracking-tighter text-white">
                 10.000+
               </p>
