@@ -1,14 +1,8 @@
 "use client";
 
-import { DoughnutChart, PolarAreaChart } from "@/components/chartjs";
+import { DoughnutChart } from "@/components/chartjs";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-// import {
-//   ArrowRightIcon,
-//   GiftTopIcon,
-//   HandRaisedIcon,
-//   QuestionMarkCircleIcon,
-// } from "@heroicons/react/24/outline";
 import { HeartIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
@@ -67,7 +61,7 @@ const beninMapHandicapPercentage = [
 export default function Home() {
   return (
     <>
-      <Header />
+      <Header ctaClassName="text-sm font-medium leading-6 tracking-tight bg-white px-8 py-3 rounded-full shadow" />
 
       <div className="relative">
         <div className="mx-auto max-w-7xl">
@@ -284,10 +278,10 @@ export default function Home() {
               </p>
             </div>
             <Link
-              href="#"
+              href="/request"
               className="px-8 py-4 rounded-full bg-blue-500 flex gap-3"
             >
-              <span className="text-base font-semibold tracking-tight text-white">
+              <span className="text-base font-medium tracking-tighter text-white">
                 Faire une demande
               </span>
             </Link>

@@ -6,17 +6,29 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function Header() {
+export default function Header({
+  className,
+  linkClassName,
+  ctaClassName,
+}: {
+  className?: string;
+  linkClassName?: string;
+  ctaClassName?: string;
+}) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50 backdrop-blur">
+    <header
+      className={`absolute inset-x-0 top-0 z-50 ${
+        className ?? "backdrop-blur"
+      }`}
+    >
       <nav
         className="flex items-center justify-between p-3 lg:px-8"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">{config.app.title}</span>
             <img
               className="h-8 w-auto"
@@ -40,7 +52,10 @@ export default function Header() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-base font-medium tracking-tighter leading-6 text-gray-900"
+              className={
+                linkClassName ??
+                "text-base font-medium tracking-tighter leading-6 text-gray-900"
+              }
             >
               {item.name}
             </Link>
@@ -49,9 +64,12 @@ export default function Header() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
             href="/login"
-            className="text-sm font-medium leading-6 bg-white px-8 py-3 rounded-full shadow"
+            className={
+              ctaClassName ??
+              "text-sm font-medium leading-6 tracking-tight bg-blue-600 text-white px-8 py-3 rounded-full shadow"
+            }
           >
-            <span>Mon Espace</span>
+            <span>Se Connecter</span>
           </Link>
         </div>
       </nav>
