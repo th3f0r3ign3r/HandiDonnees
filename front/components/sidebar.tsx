@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import NavLinks from './navLinks';
+import NavLinks from './dashboardLinks';
 
 export default function SideBar() {
     return (
