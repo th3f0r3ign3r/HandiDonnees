@@ -3,7 +3,7 @@ import { BaseEntity } from '../../core/database/base-entity/base.entity';
 import { Entity, PrimaryGeneratedColumn, Column, Unique, ManyToOne, OneToMany } from 'typeorm';
 import { Region } from '../region/region.entity';
 import { User } from '../user/user.entity';
-import { DisabilityHistory } from '../disbility-history/disability.history.entity';
+import { DisabilityHistory } from '../disability-history/disability.history.entity';
 
 @Entity()
 export class Person extends BaseEntity {

@@ -4,7 +4,7 @@ import { Person } from './person.entity';
 import { dbSource } from '../../core/database/db.source';
 import { FindOptions } from 'typeorm';
 import { SortByOrder } from '../../core/types/app.type';
-import { DisabilityHistory } from '../disbility-history/disability.history.entity';
+import { DisabilityHistory } from '../disability-history/disability.history.entity';
 
 class PersonService {
     private static instance: PersonService;

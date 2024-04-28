@@ -4,7 +4,7 @@ import personService from './person.service';
 import catchAsync from '../../core/utils/catch_async';
 import ApiError from '../../core/utils/api_error';
 import { pick } from '../../core/utils/shared.utils';
-import { DisabilityHistory } from '../disbility-history/disability.history.entity';
+import { DisabilityHistory } from '../disability-history/disability.history.entity';
 import { AppRequest } from 'src/core/interfaces/app.interface';
 
 export default class PersonController {

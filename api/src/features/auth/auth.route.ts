@@ -22,12 +22,12 @@ export default class AuthRouter implements FeatureRouter {
         this.router.post('/register', this.controller.register);
         this.router.post('/login', validate(authValidation.login), this.controller.login);
         this.router.post(
-            '/sendPersonOTP',
+            '/send-person-otp',
             validate(authValidation.sendPersonOTP),
             this.controller.sendPersonOTP
         );
         this.router.post(
-            '/verifyPersonOTP',
+            '/verify-person-otp',
             validate(authValidation.sendPersonOTP),
             this.controller.verifyPersonOTP
         );
