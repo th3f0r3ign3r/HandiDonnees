@@ -9,7 +9,7 @@ export default {
     { name: "Dons", href: "#" },
     { name: "Bénévolat", href: "#" },
     { name: "Offres d'emploi", href: "#" },
-    { name: "Actualités", href: "#" },
+    { name: "Actualités", href: "/blog" },
     { name: "Contactez-Nous", href: "/contact-us" },
   ],
 } as const;
